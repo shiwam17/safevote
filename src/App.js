@@ -22,7 +22,7 @@ export default function App() {
         <Navbar.Brand href="#home">SafeVote</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className='mx-auto'></Nav>
+          <Nav className='mx-auto my-auto' ></Nav>
           <Nav>
             <Nav.Link href='/NewPoll'>New Poll</Nav.Link>
             <Nav.Link onClick={window.accountId === '' ? login : logout}>
