@@ -4,10 +4,8 @@ import { Container, Form, Button } from "react-bootstrap";
 const NewPoll = (props) => {
     const candidateName1 = useRef();
     const candidateName2 = useRef();
-
     const candidateName1URL = useRef();
     const candidateName2URL = useRef();
-
     const promptRef = useRef();
 
     const [disableButton, changeDisable] = useState(false);
