@@ -1,4 +1,5 @@
 import {  logging, PersistentMap} from 'near-sdk-as'
+//near-sdk-as is using assemblyscript for the creating the smart contracts
 
 
 const CandidateURL=new PersistentMap<string,string>("CandidateURL");

@@ -3,13 +3,13 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import LoadingCircles from "../assets/loadingcircles.svg";
 
 const PollingStation = (props) => {
-    const [candidate1URL, changeCandidate1Url] = useState(LoadingCircles);
-    const [candidate2URL, changeCandidate2Url] = useState(LoadingCircles);
-    const [showresults, changeResultsDisplay] = useState(false);
-    const [buttonStatus, changeButtonStatus] = useState(false);
-    const [candidate1Votes, changeVote1] = useState("--");
-    const [candidate2Votes, changeVote2] = useState("--");
-    const [prompt, changePrompt] = useState("--");
+    const [candidate1URL, setCandidate1Url] = useState(LoadingCircles);
+    const [candidate2URL, setCandidate2Url] = useState(LoadingCircles);
+    const [showresults, setResultsDisplay] = useState(false);
+    const [buttonStatus, setButtonStatus] = useState(false);
+    const [candidate1Votes, setVote1] = useState("--");
+    const [candidate2Votes, setVote2] = useState("--");
+    const [prompt, setPrompt] = useState("--");
 
     useEffect(() => {
         const getInfo = async () => {
@@ -17,23 +17,23 @@ const PollingStation = (props) => {
             let voteCount = await window.contract.getVotes({
                 prompt: localStorage.getItem("prompt"),
             });
-            changeVote1(voteCount[0]);
-            changeVote2(voteCount[1]);
+            setVote1(voteCount[0]);
+            setVote2(voteCount[1]);
 
             // image stuff
 
-            changeCandidate1Url(
+            setCandidate1Url(
                 await window.contract.getUrl({
                     name: localStorage.getItem("Candidate1"),
                 })
             );
-            changeCandidate2Url(
+            setCandidate2Url(
                 await window.contract.getUrl({
                     name: localStorage.getItem("Candidate2"),
                 })
             );
 
-            changePrompt(localStorage.getItem("prompt"));
+            setPrompt(localStorage.getItem("prompt"));
 
             // vote checking stuff
 
@@ -42,15 +42,15 @@ const PollingStation = (props) => {
                 user: window.accountId,
             });
 
-            changeResultsDisplay(didUserVote);
-            changeButtonStatus(didUserVote);
+            setResultsDisplay(didUserVote);
+            setButtonStatus(didUserVote);
         };
 
         getInfo();
     }, []);
 
     const addVote = async (index) => {
-        changeButtonStatus(true);
+        setButtonStatus(true);
         await window.contract.addVote({
             prompt: localStorage.getItem("prompt"),
             index: index,
@@ -64,9 +64,9 @@ const PollingStation = (props) => {
         let voteCount = await window.contract.getVotes({
             prompt: localStorage.getItem("prompt"),
         });
-        changeVote1(voteCount[0]);
-        changeVote2(voteCount[1]);
-        changeResultsDisplay(true);
+        setVote1(voteCount[0]);
+        setVote2(voteCount[1]);
+        setResultsDisplay(true);
     };
 
     return (
