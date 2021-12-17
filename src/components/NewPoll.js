@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 
-const NewPoll = (props) => {
+const NewPoll = () => {
     const candidateName1 = useRef();
     const candidateName2 = useRef();
     const candidateName1URL = useRef();

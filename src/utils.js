@@ -2,6 +2,7 @@ import { connect, Contract, keyStores, WalletConnection } from "near-api-js";
 import getConfig from "./config";
 
 const nearConfig = getConfig(process.env.NODE_ENV || "development");
+//development means this will use testnet, if changed to production then it will use near mainnet
 
 // Initialize contract & set global variables
 export async function initContract() {
@@ -25,7 +26,7 @@ export async function initContract() {
     window.walletConnection.account(),
     nearConfig.contractName,
     {
-      // View methods are read only. They don't modify the state, but usually return some value.
+      // View methods are read only. They don't modify the state, but usually return some value. FREE
 
       viewMethods: [
         "getGreeting",
@@ -36,7 +37,7 @@ export async function initContract() {
         "getCandidatePair",
         ,
       ],
-      // Change methods can modify the state. But you don't receive the returned value when called.
+      // Change methods can modify the state. But you don't receive the returned value when called.CHARGED
       changeMethods: [
         "addUrl",
         "addCandidatePair",

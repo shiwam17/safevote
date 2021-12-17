@@ -1,4 +1,4 @@
-// import "regenerator-runtime/runtime";
+import "regenerator-runtime/runtime";
 import React from "react";
 import { login, logout } from "./utils";
 import "./global.css";
