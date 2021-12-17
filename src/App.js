@@ -32,7 +32,7 @@ export default function App() {
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='mx-auto'></Nav>
             <Nav>
-              <Nav.Link href='/NewPoll'>New Poll</Nav.Link>
+              <Link to='/NewPoll'>New Poll</Link>
               <Nav.Link onClick={window.accountId === "" ? login : logout}>
                 {window.accountId === "" ? "Login" : window.accountId}
               </Nav.Link>
